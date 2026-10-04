@@ -1,16 +1,18 @@
 # CSA Practicals (CPU Sim 4)
 
-Computer System Architecture practicals written in assembly and run on a Mano-style basic computer in **CPU Sim 4**. Each practical below has the aim, the code, the screenshot of the run, and the observed result. The same code is also kept as separate `.a` files in [`practicals/`](practicals/), and the machine file is [`machine/CSA.cpu`](machine/CSA.cpu) (summary in [`machine/CSA_machine.txt`](machine/CSA_machine.txt)).
+Computer System Architecture practicals written in assembly and run on a Mano-style basic computer in **CPU Sim 4**. Each practical below has the aim, the code, the screenshot of the run, and the observed result. The same code is also kept as separate `.a` files in this repo, and the machine file is [`CSA.cpu`](CSA.cpu) (summary in [`CSA_machine.txt`](CSA_machine.txt)).
 
 ## Repo layout
 
+All files are in one folder:
+
 ```
-csa-practicals/
-├── README.md
-├── machine/CSA.cpu             # CPU Sim 4 machine file
-├── machine/CSA_machine.txt     # text summary: registers, RAM, instruction encodings
-├── practicals/                 # one .a file per practical (P03 to P11)
-└── images/                     # simulator screenshots
+README.md
+CSA.cpu              # CPU Sim 4 machine file (fixed)
+CSA_original.cpu     # machine file before the fixes
+CSA_machine.txt      # text summary: registers, RAM, instruction encodings
+P03_ADD.a ... P11.a  # one .a file per practical
+P03_ADD.jpg ... P11.jpg   # simulator screenshots
 ```
 
 ## Notes
@@ -50,13 +52,9 @@ A: .data 1 0
 SUM: .data 1 0
 ```
 
+![P03 ADD](P03_ADD.jpg)
 
-
-![P03 ADD](images/P03_ADD.jpg)
-
-
-
-**Result:** inputs 17 and 42, output **59** (`AC = 003B`). File: [`P03_ADD.a`](practicals/P03_ADD.a)
+**Result:** inputs 17 and 42, output **59** (`AC = 003B`). File: [`P03_ADD.a`](P03_ADD.a)
 
 ---
 
@@ -78,13 +76,9 @@ A: .data 1 0
 DIFF: .data 1 0
 ```
 
+![P04 SUBTRACT](P04_SUBTRACT.jpg)
 
-
-![P04 SUBTRACT](images/P04_SUBTRACT.jpg)
-
-
-
-**Result:** inputs 77 and 25, output **52**. File: [`P04_SUBTRACT.a`](practicals/P04_SUBTRACT.a)
+**Result:** inputs 77 and 25, output **52**. File: [`P04_SUBTRACT.a`](P04_SUBTRACT.a)
 
 ---
 
@@ -139,13 +133,9 @@ RNOR: .data 1 0
 RNAND: .data 1 0
 ```
 
+![P05 logic](P05_logic.jpg)
 
-
-![P05 logic](images/P05_logic.jpg)
-
-
-
-**Result:** inputs 12 and 10. The screenshot shows the first four outputs: AND = **8**, OR = **14**, NOT A = **-13**, NOT B = **-11**. File: [`P05_logic.a`](practicals/P05_logic.a)
+**Result:** inputs 12 and 10. The screenshot shows the first four outputs: AND = **8**, OR = **14**, NOT A = **-13**, NOT B = **-11**. File: [`P05_logic.a`](P05_logic.a)
 
 ---
 
@@ -166,13 +156,9 @@ CTR: .data 1 -3
 PROD: .data 1 0
 ```
 
+![P06 MEMORY REFERENCE](P06_MEMORY_REFERENCE.jpg)
 
-
-![P06 MEMORY REFERENCE](images/P06_MEMORY_REFERENCE.jpg)
-
-
-
-**Result:** `AC = 000F` = **15**. File: [`P06_MEMORY_REFERENCE.a`](practicals/P06_MEMORY_REFERENCE.a)
+**Result:** `AC = 000F` = **15**. File: [`P06_MEMORY_REFERENCE.a`](P06_MEMORY_REFERENCE.a)
 
 ---
 
@@ -189,13 +175,9 @@ HLT
 NUM: .data 1 25
 ```
 
+![P07 CLA CMA CME HLT](P07_REGISTER_REF_CLA_CMA_CME_HLT.jpg)
 
-
-![P07 CLA CMA CME HLT](images/P07_REGISTER_REF_CLA_CMA_CME_HLT.jpg)
-
-
-
-**Result:** `AC = 65535` (all ones after CLA then CMA), `E = 1`. File: [`P07_REGISTER_REF_CLA_CMA_CME_HLT.a`](practicals/P07_REGISTER_REF_CLA_CMA_CME_HLT.a)
+**Result:** `AC = 65535` (all ones after CLA then CMA), `E = 1`. File: [`P07_REGISTER_REF_CLA_CMA_CME_HLT.a`](P07_REGISTER_REF_CLA_CMA_CME_HLT.a)
 
 ---
 
@@ -218,13 +200,9 @@ HLT
 NUM: .data 1 -2
 ```
 
+![P08 INC SPA SNA SZE](P08_REGISTER_REF_INC_SPA_SNA_SZE.jpg)
 
-
-![P08 INC SPA SNA SZE](images/P08_REGISTER_REF_INC_SPA_SNA_SZE.jpg)
-
-
-
-**Result:** `AC = 1`, `E = 0`, `PC = 11`: the program reached the final `HLT`. File: [`P08_REGISTER_REF_INC_SPA_SNA_SZE.a`](practicals/P08_REGISTER_REF_INC_SPA_SNA_SZE.a)
+**Result:** `AC = 1`, `E = 0`, `PC = 11`: the program reached the final `HLT`. File: [`P08_REGISTER_REF_INC_SPA_SNA_SZE.a`](P08_REGISTER_REF_INC_SPA_SNA_SZE.a)
 
 ---
 
@@ -242,13 +220,9 @@ HLT
 NUM: .data 1 9
 ```
 
+![P09 CIR CIL](P09_REGISTER_REF_CIR_CIL.jpg)
 
-
-![P09 CIR CIL](images/P09_REGISTER_REF_CIR_CIL.jpg)
-
-
-
-**Result (screenshot taken before the machine fix, see "Machine fixes" below):** `AC = 12`, `E = 0`. With the fixed `CSA.cpu` the result should be `AC = 9`, `E = 0`. File: [`P09_REGISTER_REF_CIR_CIL.a`](practicals/P09_REGISTER_REF_CIR_CIL.a)
+**Result (screenshot taken before the machine fix, see "Machine fixes" below):** `AC = 12`, `E = 0`. With the fixed `CSA.cpu` the result should be `AC = 9`, `E = 0`. File: [`P09_REGISTER_REF_CIR_CIL.a`](P09_REGISTER_REF_CIR_CIL.a)
 
 ---
 
@@ -269,13 +243,9 @@ DONE: LDA SUM
 SUM: .data 1 0
 ```
 
+![P10](P10.jpg)
 
-
-![P10](images/P10.jpg)
-
-
-
-**Result:** inputs 4, 10, 6, -3, output **20**. File: [`P10.a`](practicals/P10.a)
+**Result:** inputs 4, 10, 6, -3, output **20**. File: [`P10.a`](P10.a)
 
 ---
 
@@ -297,19 +267,15 @@ DONE: LDA SUM
 SUM: .data 1 0
 ```
 
+![P11](P11.jpg)
 
-
-![P11](images/P11.jpg)
-
-
-
-**Result:** inputs 4, 10, 0, output **14**. File: [`P11.a`](practicals/P11.a)
+**Result:** inputs 4, 10, 0, output **14**. File: [`P11.a`](P11.a)
 
 ---
 
 ## Machine fixes
 
-CPU Sim numbers register bits from the left, so bit 0 is the most significant bit and bit 15 of a 16-bit register is the least significant. Four microinstructions in the original machine (`machine/CSA_original.cpu`) used the wrong end of `AC`. `machine/CSA.cpu` has them corrected:
+CPU Sim numbers register bits from the left, so bit 0 is the most significant bit and bit 15 of a 16-bit register is the least significant. Four microinstructions in the original machine (`CSA_original.cpu`) used the wrong end of `AC`. `CSA.cpu` has them corrected:
 
 | Microinstruction | Used by | Original | Fixed |
 |---|---|---|---|
@@ -318,10 +284,10 @@ CPU Sim numbers register bits from the left, so bit 0 is the most significant bi
 | `if(AC(15)!=0)skip1` | SPA | tests bit 15 | tests bit 0 (the sign bit) |
 | `if(AC(15)==0)skip1` | SNA | tests bit 15 | tests bit 0 (the sign bit) |
 
-The screenshots in `images/` were taken with the original machine.
+The screenshots (`.jpg` files) were taken with the original machine.
 
 ## How to run
 
-1. Open CPU Sim 4 and load `machine/CSA.cpu`.
-2. Open a `.a` file from `practicals/`, assemble it, then press **Go**.
+1. Open CPU Sim 4 and load `CSA.cpu`.
+2. Open one of the `.a` files, assemble it, then press **Go**.
 3. Enter the inputs when the program asks for them.
