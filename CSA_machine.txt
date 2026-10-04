@@ -1,0 +1,65 @@
+CSA MACHINE (built in CPU Sim 4)
+================================
+
+Type: Mano-style basic computer, 1 RAM + 8 registers.
+
+REGISTERS (as shown in the simulator)
+-------------------------------------
+Name   Width (bits)   Purpose
+AC     16             Accumulator
+AR     12             Address Register
+DR     16             Data Register
+E      1              Extend / carry bit (used by CME, CIR, CIL)
+IR     16             Instruction Register
+PC     12             Program Counter
+S      1              Halt bit (HLT sets S = 1, execution stops)
+TMP    1              Temporary
+
+RAM
+---
+Name: M
+Address shown in hex (12-bit AR -> addresses 000 to FFF)
+Data shown in hex / unsigned dec (16-bit words)
+
+HALT
+----
+HLT microinstruction:  1 -> S (halt)
+Simulator message on stop: "EXECUTION HALTED NORMALLY due to the setting of the bit(s): [Halt- S]"
+
+INSTRUCTION ENCODINGS (read from the memory dumps in the screenshots)
+---------------------------------------------------------------------
+Memory-reference (opcode in the top hex digit, address in the low 12 bits)
+  AND addr   0xxx   (P05: 0024)
+  ADD addr   1xxx   (P03: 1007)
+  LDA addr   2xxx   (P06: 2009)
+  STA addr   3xxx   (P03: 3007)
+  BUN addr   4xxx   (P06: 4000)
+  ISZ addr   6xxx   (P06: 6008)
+
+Register-reference (top digit 7)
+  CLA   7800
+  CMA   7200
+  CME   7100
+  CLE   7400
+  CIR   7080
+  CIL   7040
+  INC   7020
+  SPA   7010
+  SNA   7008
+  SZA   7004
+  SZE   7002
+  HLT   7001
+
+Input / Output
+  INP   F800
+  OUT   F400
+
+ASSEMBLER DIRECTIVE
+-------------------
+LABEL: .data 1 value      reserves 1 word holding "value"
+
+NOTE
+----
+The machine itself is in CSA.cpu (same folder). This file is only a summary.
+CSA.cpu has four bit-position fixes (CIR, CIL, SPA, SNA); the version
+before the fixes is kept as CSA_original.cpu. See "Machine fixes" in the README.
