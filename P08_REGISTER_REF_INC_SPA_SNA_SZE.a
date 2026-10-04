@@ -1,0 +1,12 @@
+LDA NUM
+INC
+SNA
+HLT
+INC
+SPA
+HLT
+SZE
+HLT
+INC
+HLT
+NUM: .data 1 -2

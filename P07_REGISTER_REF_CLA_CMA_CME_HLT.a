@@ -1,0 +1,6 @@
+LDA NUM
+CLA
+CMA
+CME
+HLT
+NUM: .data 1 25

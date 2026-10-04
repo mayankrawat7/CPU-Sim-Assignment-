@@ -1,0 +1,10 @@
+LOOP: LDA PROD
+ADD X
+STA PROD
+ISZ CTR
+BUN LOOP
+LDA PROD
+HLT
+X: .data 1 5
+CTR: .data 1 -3
+PROD: .data 1 0

@@ -1,0 +1,11 @@
+INP
+STA A
+INP
+CMA
+INC
+ADD A
+STA DIFF
+OUT
+HLT
+A: .data 1 0
+DIFF: .data 1 0
